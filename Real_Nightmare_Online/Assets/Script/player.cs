@@ -47,7 +47,7 @@ public class player : MonoBehaviour
     {
         MOVE();
         ROTATE();
-        print(transform.position);
+        //print(transform.position);
       
     }
     #region 角色操作
