@@ -5,12 +5,15 @@ using CodeMonkey.Utils;
 
 public class newfieldofview : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private LayerMask layerMask;
+    private Mesh mesh;
     private void Start()
     {
-        Mesh mesh = new Mesh();
+        mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-
+    }
+    private void Update()
+    {
         float fov = 90f;
         Vector3 origin = Vector3.zero;
         int rayCount = 8;
@@ -29,7 +32,7 @@ public class newfieldofview : MonoBehaviour
         for (int i = 0; i < rayCount; i++)
         {
             Vector3 vertex;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), viewDistance);
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), viewDistance,layerMask);
             if (raycastHit2D.collider == null)
             {
                 // No hit
