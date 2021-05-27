@@ -50,6 +50,7 @@ public class player : MonoBehaviour
         //print(transform.position);
       
     }
+    
     #region 角色操作
     /// <summary>
     /// 角色移動
