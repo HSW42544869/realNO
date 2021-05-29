@@ -7,6 +7,7 @@ public class plsyermovement : MonoBehaviour
     public float movespeed = 5f;
 
     public Rigidbody2D rb;
+    public Animator ani;
 
     Vector2 movement;
 
@@ -15,6 +16,10 @@ public class plsyermovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        ani.SetFloat("Horizontal", movement.x);
+        ani.SetFloat("Vertical", movement.y);
+        ani.SetFloat("Speed", movement.sqrMagnitude);
     }
     private void FixedUpdate()
     {
