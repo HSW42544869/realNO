@@ -12,6 +12,7 @@ public class plsyermovement : MonoBehaviour
     public BoxCollider2D Box;
     private bool isDashButtonDown;
 
+    Vector3 moveDir;
     Vector2 movement;
 
     // Update is called once per frame
@@ -40,9 +41,16 @@ public class plsyermovement : MonoBehaviour
 
         if (isDashButtonDown)
         {
-            
-            rb.MovePosition(transform.position + movement * movespeed * dashAmount);
+            float dashAmount = 50f;
+            Vector3 dashPosition = rb.position + movement * movespeed * dashAmount;
+
+            RaycastHit2D raycastHit2d = Physics2D.Raycast(rb.position, movement*movespeed, dashAmount);
+            if (raycastHit2d.collider != null)
+            {
+                dashPosition = raycastHit2d.point;
+            }
+            rb.MovePosition(dashPosition);
             isDashButtonDown = false;
-        }
+        } 
     }
 }
