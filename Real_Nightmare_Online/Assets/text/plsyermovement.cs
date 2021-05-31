@@ -5,11 +5,12 @@ using UnityEngine;
 public class plsyermovement : MonoBehaviour
 {
     public float movespeed = 5f;
-    public float dashAmount = 50f;
+    
 
+    [SerializeField] private LayerMask dashLayerMask;
     public Rigidbody2D rb;
     public Animator ani;
-    public BoxCollider2D Box;
+    public CircleCollider2D cir;
     private bool isDashButtonDown;
 
     Vector3 moveDir;
@@ -30,6 +31,8 @@ public class plsyermovement : MonoBehaviour
         ani.SetFloat("Vertical", movement.y);
         ani.SetFloat("Speed", movement.sqrMagnitude);
 
+        moveDir = new Vector3(movement.x, movement.y).normalized;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isDashButtonDown = true;
@@ -37,14 +40,14 @@ public class plsyermovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * movespeed * Time.fixedDeltaTime);
+        rb.velocity = moveDir * movespeed;
 
         if (isDashButtonDown)
         {
-            float dashAmount = 50f;
-            Vector3 dashPosition = rb.position + movement * movespeed * dashAmount;
+            float dashAmount = 5f;
+            Vector3 dashPosition = transform.position + moveDir * dashAmount;
 
-            RaycastHit2D raycastHit2d = Physics2D.Raycast(rb.position, movement*movespeed, dashAmount);
+            RaycastHit2D raycastHit2d = Physics2D.Raycast(transform.position, moveDir, dashAmount, dashLayerMask);
             if (raycastHit2d.collider != null)
             {
                 dashPosition = raycastHit2d.point;
