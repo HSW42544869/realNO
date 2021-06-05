@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class plsyermovement : MonoBehaviour
+public class plsyermovement_simple : MonoBehaviour
 {
     public float movespeed = 5f;    //速度
     
@@ -15,24 +15,14 @@ public class plsyermovement : MonoBehaviour
     public GameObject Specialeffects;
     [Header("特效生成點"), Tooltip("特效生成起始點")]
     public Transform point;
-
     private bool isDashButtonDown;  //快速移動觸發
-    private Vector2 movement; //移動2維向量
-    private Vector3 moveDir;  //瞬移3維向量
-    private Vector3 rolldir;  //翻滾3為向量
-    private State state;
-    private enum State { 
-        Normal,
-        Rolling,
-    }
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        state = State.Normal;
-    }
+
+    Vector2 movement; //2維向量
+    Vector3 moveDir;  //3維向量
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         Move();
     }
     /// <summary>
@@ -49,13 +39,9 @@ public class plsyermovement : MonoBehaviour
 
         moveDir = new Vector3(movement.x, movement.y).normalized;
 
-        if (Input.GetKeyDown(KeyCode.F))    //如果按下空白鍵觸發快速移動
+        if (Input.GetKeyDown(KeyCode.Space))    //如果按下空白鍵觸發快速移動
         {
             isDashButtonDown = true;    //開關打開
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            rolldir = moveDir;
         }
     }
     private void FixedUpdate()
