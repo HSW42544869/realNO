@@ -61,6 +61,8 @@ public class plsyermovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.N))    //如果按下空白鍵觸發快速移動
                 {
                     isDashButtonDown = true;    //開關打開
+                    Instantiate(Specialeffects);
+                    
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
