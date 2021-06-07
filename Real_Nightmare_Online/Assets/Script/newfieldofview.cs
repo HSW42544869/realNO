@@ -14,9 +14,9 @@ public class newfieldofview : MonoBehaviour
     }
     private void Update()
     {
-        float fov = 90f;
+        float fov = 90f;    //角度90
         Vector3 origin = Vector3.zero;
-        int rayCount = 8;
+        int rayCount = 45;
         float angle = 0f;
         float angleIncrease = fov / rayCount;
         float viewDistance = 5f;
