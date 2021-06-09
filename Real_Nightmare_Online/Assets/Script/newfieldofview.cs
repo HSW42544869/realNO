@@ -7,19 +7,22 @@ public class newfieldofview : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
+    private float fov;
+    private Vector3 origin;
+    private float startingAngle;
     private void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+        fov = 90f;    //角度90
+        origin = Vector3.zero;
     }
     private void Update()
     {
-        float fov = 90f;    //角度90
-        Vector3 origin = Vector3.zero;
-        int rayCount = 45;
-        float angle = 0f;
+        int rayCount = 50;
+        float angle = startingAngle;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 5f;
+        float viewDistance = 5f;    //手電筒大小
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -60,5 +63,14 @@ public class newfieldofview : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
+    }
+
+    public void SetOrigin(Vector3 origin)
+    {
+        this.origin = origin;
+    }
+    public void SetAimDirection(Vector3 animDirection)
+    { 
+        startingAngle = UtilsClass.GetAngleFromVectorFloat(animDirection) - fov/ 2f;
     }
 }
