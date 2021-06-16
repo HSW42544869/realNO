@@ -6,7 +6,6 @@ public class plsyermovement : MonoBehaviour
 {
     public float movespeed = 3f;    //速度
     
-
     [SerializeField] private LayerMask dashLayerMask;   //設定快速移動且不會被穿越
     public Rigidbody2D rb;  
     public Animator ani;
