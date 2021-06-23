@@ -3,7 +3,7 @@
 public class Enemy2 : MonoBehaviour
 {
     [Header("移動範圍")]
-    public float moverange = 5;
+    public float moverange = 10;
     [Header("目標物件")]
     public Transform target;
     [Header("移動速度")]
@@ -28,7 +28,7 @@ public class Enemy2 : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             Vector3 offset = transform.position - target.position;
-            transform.rotation = Quaternion.LookRotation(Vector3.forward,offset);
+            transform.rotation = Quaternion.LookRotation(Vector3.forward,-offset);
         }
     }
     private void OnDrawGizmos()
