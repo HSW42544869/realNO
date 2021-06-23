@@ -58,7 +58,7 @@ public class PlayerAimWeapon : MonoBehaviour
             Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
 
             ani.SetBool("shoot",true);
-            OnShoot?.Invoke(this, new OnShootEventArgs
+            OnShoot.Invoke(this, new OnShootEventArgs
             {
                 gunEndPointPosition = aimGunEndPointTransform.position,
                 shootPosition = mousePosition,
