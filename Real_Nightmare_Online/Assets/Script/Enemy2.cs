@@ -27,7 +27,7 @@ public class Enemy2 : MonoBehaviour
         if (dis < moverange)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-            Vector3 offset =transform.position - target.position;
+            Vector3 offset = transform.position - target.position;
             transform.rotation = Quaternion.LookRotation(Vector3.forward,offset);
         }
     }

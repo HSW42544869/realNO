@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
 
 public class plsyermovement : MonoBehaviour
 {
@@ -42,15 +43,16 @@ public class plsyermovement : MonoBehaviour
     /// </summary>
     private void Move()     //且用Blend tree判斷方位
     {
+        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 offset = transform.position - mousePosition;
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
+
         switch (state) {
             case State.Normal:
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
 
-                ani.SetFloat("Horizontal", movement.x);
-                ani.SetFloat("Vertical", movement.y);
-                ani.SetFloat("Speed", movement.sqrMagnitude);
-
+             
                 moveDir = new Vector3(movement.x, movement.y).normalized;
                 if (movement.x != 0 || movement.y != 0) {
                     //Not idle
