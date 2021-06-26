@@ -29,6 +29,7 @@ public class CamaraCtrl : MonoBehaviour
         posA.x = Mathf.Clamp(posA.x, width.x, width.y);   // 判斷左右距離
 
         posB = Vector2.Lerp(posB, posA,Time.deltaTime * speed); 
-        transform.position = posB;  // 設定新攝影機座標      
+        transform.position = posB;  // 設定新攝影機座標
+                     
     }
 }

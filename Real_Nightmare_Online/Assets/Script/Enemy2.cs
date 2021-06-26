@@ -2,6 +2,8 @@
 
 public class Enemy2 : MonoBehaviour
 {
+    [Header("血量")]
+    public int live = 10;
     [Header("移動範圍")]
     public float moverange = 10;
     [Header("目標物件")]

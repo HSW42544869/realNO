@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("文字")]
+    public Text text;
+    private void Update()
     {
-        
+        Live();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Live()
     {
-        
+        text.text = ""+ plsyermovement.live;       // 更新文字介面
     }
 }

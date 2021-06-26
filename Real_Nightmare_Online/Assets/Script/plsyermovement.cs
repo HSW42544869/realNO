@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 
+
 public class plsyermovement : MonoBehaviour
 {
+    [Header("無敵時間")]
+    public float invin = 2;
     public float movespeed = 3f;    //速度
     [Header("生命值")]
-    public int live;
+    static public int live = 100;
     [SerializeField] private LayerMask dashLayerMask;   //設定快速移動且不會被穿越
-    public Rigidbody2D rb;  
+    public Rigidbody2D rb;
     public Animator ani;
     public CircleCollider2D cir;
-    [Header("移動特效"),Tooltip("存放要生成的特效預製物")]
+    [Header("移動特效"), Tooltip("存放要生成的特效預製物")]
     public GameObject Specialeffects;
     [Header("特效生成點"), Tooltip("特效生成起始點")]
     public Transform point;
+    [Header("死亡音效")]
+    public AudioClip die;
 
+    private AudioSource aud;
     private bool isDashButtonDown;  //快速移動觸發
     private Vector2 movement; //移動2維向量
     private Vector3 moveDir;  //瞬移3維向量
@@ -24,21 +30,27 @@ public class plsyermovement : MonoBehaviour
     private Vector3 lastMoveDir;
     private float rollspeed;    //滾動速度
     private State state;
-    private enum State { 
+    private enum State {
         Normal,
         Rolling,
     }
     private void Awake()
     {
+        aud = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         state = State.Normal;
+        
     }
 
     // Update is called once per frame
-    void Update(){
-       
+    void Update() {
+
         Move();
+        Invin();
+        Die();
     }
+
+    #region 角色操作
     /// <summary>
     /// 正常移動    且用Blead tree判斷方向
     /// </summary>
@@ -53,7 +65,7 @@ public class plsyermovement : MonoBehaviour
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
 
-             
+
                 moveDir = new Vector3(movement.x, movement.y).normalized;
                 if (movement.x != 0 || movement.y != 0) {
                     //Not idle
@@ -63,8 +75,8 @@ public class plsyermovement : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.N))    //如果按下空白鍵觸發快速移動
                 {
                     isDashButtonDown = true;    //開關打開
-                    
-                    
+
+
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -108,6 +120,64 @@ public class plsyermovement : MonoBehaviour
             case State.Rolling:
                 rb.velocity = rolldir * rollspeed;
                 break;
+        }
+    }
+    #endregion
+
+
+    #region 受到傷害
+    private bool hit;
+    private float time = 0;
+    private void Invin()
+    {
+        if (time >= invin)
+        {
+            time = 0;
+            hit = true;
+        }
+        else
+        {
+            time += Time.deltaTime;            // 累加時間
+        }
+    }
+    
+    private int hit_sp = 15;//蜘蛛手下傷害
+    private int hit_boss = 25; //boss傷害
+    private int hit_skil = 5; //蜘蛛絲傷害
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hit)
+        {
+            
+            hit = false;
+            if (collision.name == "Sprite(Clone)")
+            {
+                live -= hit_sp;
+            }
+            if(collision.name == "S(Clone)")
+            {
+                Destroy(collision.gameObject);
+                live -= hit_skil;
+            }
+            if (collision.name == "Boss")
+            {
+                live -= hit_boss;
+            }
+        }
+        
+    }
+    #endregion
+
+
+
+    private void Die()
+    {
+        if(live <= 0)
+        {
+            aud.PlayOneShot(die, Random.Range(0.3f, 0.5f));
+            //ani.SetBool("", true);
+            enabled = false;  
         }
     }
 }

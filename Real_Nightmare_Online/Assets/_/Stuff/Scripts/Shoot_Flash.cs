@@ -28,7 +28,7 @@ public class Shoot_Flash {
 	
 	private float timer = .05f;
 	private int index;
-	private static Vector3 baseSize = new Vector3(20, 20);
+	private static Vector3 baseSize = new Vector3(1, 1);
 
     private static FunctionUpdater functionUpdater;
 
