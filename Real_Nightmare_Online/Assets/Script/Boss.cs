@@ -70,4 +70,5 @@ public class Boss : MonoBehaviour
             enabled = false;
         }
     }
+   
 }

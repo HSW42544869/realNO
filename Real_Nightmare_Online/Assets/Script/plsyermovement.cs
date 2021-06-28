@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
-
+using UnityEngine.SceneManagement;
 
 public class plsyermovement : MonoBehaviour
 {
@@ -166,6 +166,14 @@ public class plsyermovement : MonoBehaviour
             }
         }
         
+        if(collision.name == "傳送門")
+        {
+            int lvIndex = SceneManager.GetActiveScene().buildIndex;     // 取得當前場景的編號
+
+            lvIndex++;                                                  // 編號加一
+
+            SceneManager.LoadScene(lvIndex);                            // 載入下一關
+        }
     }
     #endregion
 
@@ -180,4 +188,5 @@ public class plsyermovement : MonoBehaviour
             enabled = false;  
         }
     }
+    
 }

@@ -10,6 +10,8 @@ public class Enemy2 : MonoBehaviour
     public Transform target;
     [Header("移動速度")]
     public float speed = 0.5f;
+    [Header("死亡音效")]
+    public AudioClip die;
 
     private void Awake()
     {
@@ -18,6 +20,7 @@ public class Enemy2 : MonoBehaviour
     private void Update()
     {
         Move();
+        Die();
     }
     /// <summary>
     /// 移動
@@ -33,9 +36,29 @@ public class Enemy2 : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(Vector3.forward,-offset);
         }
     }
+    /// <summary>
+    /// 死亡
+    /// </summary>
+    private void Die()
+    {
+        if(live <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.3f);
         Gizmos.DrawSphere(transform.position, moverange);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "子彈(Clone)")
+        {
+            live -= 1;
+            Destroy(collision);
+        }
     }
 }

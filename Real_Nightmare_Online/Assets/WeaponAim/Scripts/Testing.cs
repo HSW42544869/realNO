@@ -6,9 +6,19 @@ using CodeMonkey.Utils;
 public class Testing : MonoBehaviour {
 
     [SerializeField] private PlayerAimWeapon playerAimWeapon;
+    [Header("子彈")]
+    public GameObject b;
+    [Header("生成點")]
+    public Transform point;
+    [Header("子彈速度")]
+    public float speed;
 
     private void Start() {
         playerAimWeapon.OnShoot += PlayerAimWeapon_OnShoot;
+    }
+    private void Update()
+    {
+        shoot();
     }
 
     private void PlayerAimWeapon_OnShoot(object sender, PlayerAimWeapon.OnShootEventArgs e) {
@@ -18,6 +28,19 @@ public class Testing : MonoBehaviour {
 
         Vector3 shootDir = (e.shootPosition - e.gunEndPointPosition).normalized;
         shootDir = UtilsClass.ApplyRotationToVector(shootDir, 90f);
+       
+
+
+    }
+    private void shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            GameObject temp = Instantiate(b, point.position, point.rotation);   // 生成子彈
+            
+            temp.GetComponent<Rigidbody2D>().velocity = -transform.up * speed;    // 子彈賦予推力
+            Destroy(b, 2);
+        }
         
     }
 }
