@@ -12,7 +12,15 @@ public class Testing : MonoBehaviour {
     public Transform point;
     [Header("子彈速度")]
     public float speed;
+    [Header("射擊音效")]
+    public AudioClip shootA;
 
+    private AudioSource aud;
+
+    private void Awake()
+    {
+        aud = GetComponent<AudioSource>();
+    }
     private void Start() {
         playerAimWeapon.OnShoot += PlayerAimWeapon_OnShoot;
     }
@@ -37,9 +45,9 @@ public class Testing : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameObject temp = Instantiate(b, point.position, point.rotation);   // 生成子彈
-            
+            aud.PlayOneShot(shootA, Random.Range(0.3f, 0.5f));
             temp.GetComponent<Rigidbody2D>().velocity = -transform.up * speed;    // 子彈賦予推力
-            Destroy(b, 2);
+            Destroy(temp, 2);
         }
         
     }

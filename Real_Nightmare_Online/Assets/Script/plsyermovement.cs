@@ -177,9 +177,8 @@ public class plsyermovement : MonoBehaviour
     }
     #endregion
 
-
-
-    private void Die()
+    #region 玩家死亡
+        private void Die()
     {
         if(live <= 0)
         {
@@ -188,5 +187,5 @@ public class plsyermovement : MonoBehaviour
             enabled = false;  
         }
     }
-    
+#endregion
 }
