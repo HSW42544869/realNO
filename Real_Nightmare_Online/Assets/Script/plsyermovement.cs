@@ -72,7 +72,7 @@ public class plsyermovement : MonoBehaviour
                     lastMoveDir = moveDir;
                 }
 
-                if (Input.GetKeyDown(KeyCode.N))    //如果按下空白鍵觸發快速移動
+                if (Input.GetKeyDown(KeyCode.F))    //如果按下空白鍵觸發快速移動
                 {
                     isDashButtonDown = true;    //開關打開
 
@@ -80,6 +80,7 @@ public class plsyermovement : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    
                     rolldir = lastMoveDir;
                     rollspeed = 25f;
                     state = State.Rolling;
@@ -105,6 +106,7 @@ public class plsyermovement : MonoBehaviour
 
                 if (isDashButtonDown)   //如果(瞬移開關打開)
                 {
+                    
                     float dashAmount = 5f;
                     Vector3 dashPosition = transform.position + lastMoveDir * dashAmount;
 

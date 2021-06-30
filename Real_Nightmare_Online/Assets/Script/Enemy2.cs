@@ -12,9 +12,14 @@ public class Enemy2 : MonoBehaviour
     public float speed = 0.5f;
     [Header("死亡音效")]
     public AudioClip die;
+    [Header("死亡動畫")]
+    public Animator deada;
+
+    private Animator ani;
 
     private void Awake()
     {
+        ani = GetComponent<Animator>();
         target = GameObject.Find("character").transform;
     }
     private void Update()
@@ -43,6 +48,7 @@ public class Enemy2 : MonoBehaviour
     {
         if(live <= 0)
         {
+
             Destroy(gameObject);
         }
     }
