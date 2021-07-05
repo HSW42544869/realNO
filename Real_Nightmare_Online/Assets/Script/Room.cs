@@ -22,9 +22,9 @@ public class Room : MonoBehaviour
         doorUp.SetActive(roomUp);
         doorDown.SetActive(roomDown);
     }
-    public void UpdateRoom(float xoffset, float yoffset)
+    public void UpdateRoom()
     {
-        stepToStart = (int)(Mathf.Abs(transform.position.x / xoffset) + (Mathf.Abs(transform.position.y / yoffset)));
+        stepToStart = (int)(Mathf.Abs(transform.position.x / 44) + (Mathf.Abs(transform.position.y / 26)));
 
         text.text = stepToStart.ToString();
         //上下左右有房間都將它壘加一
@@ -37,12 +37,6 @@ public class Room : MonoBehaviour
         if (roomRight)
             doorNumber++;
     }
-    /*private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            CameraController.instance.ChangeTarget(transform);
-        }
-    }*/
+    
 
 }
