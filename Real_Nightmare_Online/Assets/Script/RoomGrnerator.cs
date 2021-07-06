@@ -75,7 +75,7 @@ public class RoomGrnerator : MonoBehaviour
                     generatorPoint.position += new Vector3(0, -Yoffset, 0);
                     break;
                 case Direction.left:
-                    generatorPoint.position += new Vector3(Xoffset, 0, 0);
+                    generatorPoint.position += new Vector3(-Xoffset, 0, 0);
                     break;
                 case Direction.right:
                     generatorPoint.position += new Vector3(Xoffset, 0, 0);
@@ -90,7 +90,7 @@ public class RoomGrnerator : MonoBehaviour
         newRoom.roomLeft = Physics2D.OverlapCircle(roomPosition + new Vector3(-Xoffset, 0, 0), 0.2f, roomLayer);
         newRoom.roomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(Xoffset, 0, 0), 0.2f, roomLayer);
 
-        newRoom.UpdateRoom();
+        newRoom.UpdateRoom(Xoffset,Yoffset);
 
         switch (newRoom.doorNumber)
         {

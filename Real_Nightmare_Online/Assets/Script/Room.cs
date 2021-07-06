@@ -22,9 +22,9 @@ public class Room : MonoBehaviour
         doorUp.SetActive(roomUp);
         doorDown.SetActive(roomDown);
     }
-    public void UpdateRoom()
+    public void UpdateRoom(float Xoffset , float Yoffset)
     {
-        stepToStart = (int)(Mathf.Abs(transform.position.x / 44) + (Mathf.Abs(transform.position.y / 26)));
+        stepToStart = (int)(Mathf.Abs(transform.position.x / Xoffset) + (Mathf.Abs(transform.position.y / Yoffset)));
 
         text.text = stepToStart.ToString();
         //上下左右有房間都將它壘加一
