@@ -33,6 +33,7 @@ public class RoomGrnerator : MonoBehaviour
     List<GameObject> oneWayRooms = new List<GameObject>();
 
     public WallType walltype;
+   
     private void Start()
     {
         for (int i = 0; i < roomNumber; i++)
@@ -48,7 +49,7 @@ public class RoomGrnerator : MonoBehaviour
         endRoom = rooms[0].gameObject;
         foreach (var room in rooms)
         {
-            /*if (room.transform.position.sqrMagnitude > endRoom.transform.position.sqrMagnitude)
+           /* if (room.transform.position.sqrMagnitude > endRoom.transform.position.sqrMagnitude)
             {
                 endRoom = room.gameObject;
             }*/
@@ -58,10 +59,6 @@ public class RoomGrnerator : MonoBehaviour
             endRoom.GetComponent<SpriteRenderer>().color = endColor;
     }
 
-    private void Update()
-    {
-
-    }
     public void ChangePoint()
     {
         do

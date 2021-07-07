@@ -24,7 +24,7 @@ public class Egg : MonoBehaviour
 
     private void Born()
     {
-        float dis = Vector3.Distance(target.position, transform.position);
+        float dis = Vector2.Distance(target.position, transform.position);
 
         if (timer >= time)
         {
