@@ -21,6 +21,8 @@ public class RoomGrnerator : MonoBehaviour
     public LayerMask roomLayer;
     public int maxStep;
 
+    [Header("傳送門")]
+    public GameObject door;
 
     public List<Room> rooms = new List<Room>();
 
@@ -122,7 +124,7 @@ public class RoomGrnerator : MonoBehaviour
                 if (newRoom.roomLeft && newRoom.roomUp && newRoom.roomRight)
                     Instantiate(walltype.tripleLUR, roomPosition, Quaternion.identity);
                 if (newRoom.roomLeft && newRoom.roomRight && newRoom.roomDown)
-                    Instantiate(walltype.tripleLUB, roomPosition, Quaternion.identity);
+                    Instantiate(walltype.tripleLRB, roomPosition, Quaternion.identity);
                 if (newRoom.roomDown && newRoom.roomUp && newRoom.roomRight)
                     Instantiate(walltype.tripleURB, roomPosition, Quaternion.identity);
                 if (newRoom.roomLeft && newRoom.roomUp && newRoom.roomDown)
@@ -169,13 +171,21 @@ public class RoomGrnerator : MonoBehaviour
         else {
             endRoom = farRooms[Random.Range(0, farRooms.Count)];
         }
+        door.transform.position = endRoom.transform.position;
     }
+
+
+   
+
+
+
 }
+
 [System.Serializable]
 public class WallType {
     public GameObject singleLeft, singleRight, singleUp, singleBottom,
                         doubleLU, doubleLR, doubleLB, doubleUR, doubleUB, doubleRB,
-                        tripleLUR, tripleLUB, tripleURB, tribleLRB,
+                        tripleLUR, tripleLUB, tripleURB, tripleLRB,
                         fourDoors;
     
 }

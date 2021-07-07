@@ -4,9 +4,6 @@ using UnityEngine;
 using V_AnimationSystem;
 using CodeMonkey.Utils;
 
-/*
- * Enemy
- * */
 public class Enemy : MonoBehaviour {
     
     public interface IEnemyTargetable {
