@@ -57,7 +57,7 @@ public class plsyermovement : MonoBehaviour
     private void Move()     //且用Blend tree判斷方位
     {
         Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
-        Vector3 offset = transform.position - mousePosition;
+        Vector3 offset = transform.position -mousePosition;
         transform.rotation = Quaternion.LookRotation(Vector3.forward, offset);
 
         switch (state) {
