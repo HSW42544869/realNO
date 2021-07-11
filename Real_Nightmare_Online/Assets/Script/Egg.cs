@@ -5,7 +5,7 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     [Header("血量")]
-    public int live = 3;
+    static public int elive = 3;
     [Header("範圍")]
     public float range = 5;
     [Header("目標物件")]
@@ -16,6 +16,10 @@ public class Egg : MonoBehaviour
     public float time = 3;
     private float timer = 0;
 
+    private void Awake()
+    {
+        target = GameObject.Find("character").transform;
+    }
     private void Update()
     {
         Born();
@@ -28,9 +32,10 @@ public class Egg : MonoBehaviour
 
         if (timer >= time)
         {
-            timer = 0;
+            
             if (dis < range)
             {
+                timer = 0;
                 Instantiate(born, transform.position, transform.rotation);
             }
 
@@ -39,12 +44,12 @@ public class Egg : MonoBehaviour
         {
             timer += Time.deltaTime;            // 累加時間
         }
-       
+        print(timer);
     }
 
     private void Die()
     {
-        if (live <= 0)
+        if (elive <= 0)
         {
             Instantiate(born, transform.position, transform.rotation);
             Destroy(gameObject);
@@ -55,7 +60,7 @@ public class Egg : MonoBehaviour
     {
         if (collision.name == "子彈(Clone)")
         {
-            live -= 1;
+            elive -= 1;
             Destroy(collision);
         }
     }
