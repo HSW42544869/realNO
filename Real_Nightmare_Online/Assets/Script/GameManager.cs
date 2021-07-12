@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     public Text text;
     [Header("子彈")]
     public Text buttle;
+    [Header("鑰匙")]
+    public Text keytext;
 
     private void Update()
     {
         Live();
         Buttle();
+        Key();  
     }
     public void Live()
     {
@@ -21,5 +24,9 @@ public class GameManager : MonoBehaviour
     public void Buttle()
     {
         buttle.text = "" + PlayerAimWeapon.bullet;
+    }
+    public void Key()
+    {
+        keytext.text = "" + plsyermovement.key;       
     }
 }

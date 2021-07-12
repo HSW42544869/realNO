@@ -21,7 +21,8 @@ public class plsyermovement : MonoBehaviour
     public Transform point;
     [Header("死亡音效")]
     public AudioClip die;
-
+    [Header("鑰匙數量")]
+    static public int key = 0;
 
     private AudioSource aud;
     private bool isDashButtonDown;  //快速移動觸發
@@ -168,6 +169,11 @@ public class plsyermovement : MonoBehaviour
             {
                 live -= hit_boss;
             }
+        }
+        if (collision.name == "key(Clone)")
+        {
+            Destroy(collision.gameObject);
+            key += 1;
         }
         
         if(collision.name == "傳送門")
