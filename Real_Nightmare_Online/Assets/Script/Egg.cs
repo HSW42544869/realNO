@@ -44,7 +44,7 @@ public class Egg : MonoBehaviour
         {
             timer += Time.deltaTime;            // 累加時間
         }
-        print(timer);
+        
     }
 
     private void Die()

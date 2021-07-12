@@ -22,6 +22,7 @@ public class plsyermovement : MonoBehaviour
     [Header("死亡音效")]
     public AudioClip die;
 
+
     private AudioSource aud;
     private bool isDashButtonDown;  //快速移動觸發
     private Vector2 movement; //移動2維向量
@@ -126,6 +127,7 @@ public class plsyermovement : MonoBehaviour
     }
     #endregion
 
+   
 
     #region 受到傷害
     private bool hit;
@@ -190,4 +192,6 @@ public class plsyermovement : MonoBehaviour
         }
     }
 #endregion
+
+
 }

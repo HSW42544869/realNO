@@ -6,6 +6,14 @@ using CodeMonkey.Utils;
 
 public class PlayerAimWeapon : MonoBehaviour
 {
+    
+    [Header("換彈音效")]
+    public AudioClip switchbullet;
+    [Header("彈夾大小")]
+    public int bulletclip = 10;
+    [Header("子彈數量")]
+    static public int bullet;
+
     [SerializeField] private FieldOfView fieldofview;
     public class OnShootEventArgs : EventArgs   //位置上進行動作
     {
@@ -19,12 +27,16 @@ public class PlayerAimWeapon : MonoBehaviour
     private Transform aimGunEndPointTransform;
     private Transform aimShellPositionTransform;
     private Animator ani;
-
+    private GameObject stop;
+    private AudioSource aud;
 
     bool isAimDownSights = false;
 
     private void Awake()
     {
+        aud = GetComponent<AudioSource>();
+        stop = GameObject.Find("character");
+        bullet = bulletclip;
         aimTransform = transform.Find("Aim");   //追蹤目標
         ani =aimTransform.GetComponent<Animator>(); //動畫控制
         aimGunEndPointTransform = aimTransform.Find("GunEndPointPosition"); //獲取物件
@@ -33,7 +45,18 @@ public class PlayerAimWeapon : MonoBehaviour
     private void Update()
     {
         HandleAiming();
-        Handleshooting();
+        if(bullet > 0)
+        {
+            stop.GetComponent<Testing>().enabled = true;
+            Handleshooting();
+        }
+        else
+        {
+            stop.GetComponent<Testing>().enabled = false;
+        }
+        SwitchBullet();
+
+
     }
     /// <summary>
     /// 取得位置
@@ -51,12 +74,12 @@ public class PlayerAimWeapon : MonoBehaviour
     /// <summary>
     /// 射擊動作、開關
     /// </summary>
-    private void Handleshooting()
+    public void Handleshooting()
     {
         if (Input.GetMouseButtonDown(0))    //射擊按鍵
         {
             Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
-
+            bullet -= 1;
             ani.SetBool("shoot",true);
             OnShoot?.Invoke(this, new OnShootEventArgs
             {
@@ -84,6 +107,15 @@ public class PlayerAimWeapon : MonoBehaviour
             }
         }
                 
+    }
+
+    private void SwitchBullet()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            aud.PlayOneShot(switchbullet);
+            bullet = bulletclip;
+        }
     }
         
 }
