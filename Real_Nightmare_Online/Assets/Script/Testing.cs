@@ -32,7 +32,7 @@ public class Testing : MonoBehaviour {
     private void PlayerAimWeapon_OnShoot(object sender, PlayerAimWeapon.OnShootEventArgs e) {
         UtilsClass.ShakeCamera(.6f, .05f);
         WeaponTracer.Create(e.gunEndPointPosition, e.shootPosition);
-        Shoot_Flash.AddFlash(e.gunEndPointPosition);
+        //Shoot_Flash.AddFlash(e.gunEndPointPosition);
 
         Vector3 shootDir = (e.shootPosition - e.gunEndPointPosition).normalized;
         shootDir = UtilsClass.ApplyRotationToVector(shootDir, 90f);
