@@ -74,7 +74,7 @@ public class plsyermovement : MonoBehaviour
                     lastMoveDir = moveDir;
                 }
 
-                if (Input.GetKeyDown(KeyCode.F))    //如果按下空白鍵觸發快速移動
+                if (Input.GetKeyDown(KeyCode.P))    //如果按下空白鍵觸發快速移動
                 {
                     isDashButtonDown = true;    //開關打開
 

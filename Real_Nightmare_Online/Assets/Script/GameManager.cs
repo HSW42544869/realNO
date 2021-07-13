@@ -1,6 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +10,25 @@ public class GameManager : MonoBehaviour
     public Text buttle;
     [Header("鑰匙")]
     public Text keytext;
+    public Transform character;
 
+    private Vector3 oriPosition;
+    private int num0fKeys = 0;
+
+    
     private void Update()
     {
         Live();
         Buttle();
-        Key();  
+        GetKeyNumbers();
+        AddKey();
+        
+        //oriPosition = character.transform.position;
+    }
+    private void Awake()
+    {
+        num0fKeys = 0;
+        keytext.text = num0fKeys.ToString();
     }
     public void Live()
     {
@@ -25,8 +38,26 @@ public class GameManager : MonoBehaviour
     {
         buttle.text = "" + PlayerAimWeapon.bullet;
     }
-    public void Key()
+    #region 鑰匙系統
+    public int GetKeyNumbers()
+    {
+        return num0fKeys;
+    }
+    public void AddKey()
     {
         keytext.text = "" + plsyermovement.key;       
     }
+    public void UseKey()
+    {
+        num0fKeys -= 1;
+        keytext.text = num0fKeys.ToString();
+    }
+    #endregion
+    /*private void returnPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            character.transform.position = oriPosition;
+        }
+    }*/
 }
