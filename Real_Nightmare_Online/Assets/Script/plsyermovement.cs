@@ -173,7 +173,7 @@ public class plsyermovement : MonoBehaviour
         if (collision.name == "key(Clone)")
         {
             Destroy(collision.gameObject);
-            key += 1;
+            key += 2;
         }
         
         if(collision.name == "傳送門")
