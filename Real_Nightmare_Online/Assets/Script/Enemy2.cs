@@ -11,15 +11,17 @@ public class Enemy2 : MonoBehaviour
     [Header("移動速度")]
     public float speed = 0.5f;
     [Header("死亡音效")]
-    public AudioClip die;
-    [Header("死亡動畫")]
-    public Animator deada;
+    public AudioClip deathsound;
 
+    private AudioSource aud;
     private Animator ani;
+    private Rigidbody2D rig;
 
     private void Awake()
     {
         ani = GetComponent<Animator>();
+        aud = GetComponent<AudioSource>();
+        rig = GetComponent<Rigidbody2D>();
         target = GameObject.Find("character").transform;
     }
     private void Update()
@@ -36,6 +38,7 @@ public class Enemy2 : MonoBehaviour
 
         if (dis < moverange)
         {
+            
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             Vector3 offset = transform.position - target.position;
             transform.rotation = Quaternion.LookRotation(Vector3.forward,-offset);
@@ -48,8 +51,12 @@ public class Enemy2 : MonoBehaviour
     {
         if(live <= 0)
         {
-
-            Destroy(gameObject);
+            
+            ani.SetBool("dead" , true);
+            aud.PlayOneShot(deathsound, 2.5f);
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            rig.Sleep();
+            Destroy(gameObject,1f);
         }
     }
 
