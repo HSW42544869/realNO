@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         Live();
         Buttle();
-        GetKeyNumbers();
+        
         AddKey();
         
         //oriPosition = character.transform.position;
@@ -45,11 +45,12 @@ public class GameManager : MonoBehaviour
     }
     public void AddKey()
     {
+        num0fKeys++;
         keytext.text = "" + plsyermovement.key;       
     }
     public void UseKey()
     {
-        num0fKeys -= 1;
+        num0fKeys--;
         keytext.text = num0fKeys.ToString();
     }
     #endregion
