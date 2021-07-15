@@ -55,7 +55,7 @@ public class Enemy2 : MonoBehaviour
         {
             
             ani.SetBool("dead" , true);
-            aud.PlayOneShot(deathsound, 2.5f);
+            //aud.PlayOneShot(deathsound, 2.5f);
             GetComponent<CapsuleCollider2D>().enabled = false;
             rig.Sleep();
             Destroy(gameObject,1f);
