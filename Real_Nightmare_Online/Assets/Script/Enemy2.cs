@@ -19,6 +19,7 @@ public class Enemy2 : MonoBehaviour
 
     private void Awake()
     {
+
         ani = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
         rig = GetComponent<Rigidbody2D>();
@@ -38,11 +39,12 @@ public class Enemy2 : MonoBehaviour
 
         if (dis < moverange)
         {
-            
+            print("找到人");
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             Vector3 offset = transform.position - target.position;
             transform.rotation = Quaternion.LookRotation(Vector3.forward,-offset);
         }
+        else print("找no到人");
     }
     /// <summary>
     /// 死亡

@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         num0fKeys = 0;
-        keytext.text = num0fKeys.ToString();
+        //keytext.text = num0fKeys.ToString();
     }
     public void Live()
     {
