@@ -184,6 +184,15 @@ public class plsyermovement : MonoBehaviour
 
             SceneManager.LoadScene(lvIndex);                            // 載入下一關
         }
+        if(collision.name == "heal")
+        {
+            if (live + 15 > 100)
+            {
+                live = 100;
+                Destroy(collision.gameObject);
+            }
+            else live += 15; Destroy(collision.gameObject);
+        }
     }
     #endregion
 
