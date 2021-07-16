@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
 
     private AudioSource aud;
     private Rigidbody2D rig;
-    public CircleCollider2D cir;
+    private CircleCollider2D cir;
     private void Awake()
     {
         cir = GetComponent<CircleCollider2D>();
