@@ -10,23 +10,26 @@ public class GameManager : MonoBehaviour
     public Text buttle;
     [Header("鑰匙")]
     public Text keytext;
-    public Transform character;
-
+    [Header("暫停")]
+    public bool pausebool;
+    public GameObject pauseobj;
     private Vector3 oriPosition;
     private int num0fKeys = 0;
 
+    private GameObject player;
     
     private void Update()
     {
         Live();
         Buttle();
-        
+        pause();
         AddKey();
         
         //oriPosition = character.transform.position;
     }
     private void Awake()
     {
+        player = GameObject.Find("character");
         num0fKeys = 0;
         //keytext.text = num0fKeys.ToString();
     }
@@ -61,4 +64,27 @@ public class GameManager : MonoBehaviour
             character.transform.position = oriPosition;
         }
     }*/
+
+    public void pause()
+    {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            if (pausebool == true)
+            {
+                player.SetActive(true);
+                pauseobj.SetActive(false);
+                Time.timeScale = 1;
+                pausebool = false;
+                
+            }
+            else
+            {
+                player.SetActive(false);
+                pauseobj.SetActive(true);
+                Time.timeScale = 0;
+                pausebool = true;
+                
+            }
+        }
+    }
 }

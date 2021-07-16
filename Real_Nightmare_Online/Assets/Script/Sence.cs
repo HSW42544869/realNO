@@ -9,4 +9,10 @@ public class Sence : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                          
     }
+    public void ReStart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+        plsyermovement.live = 100;
+
+    }
 }

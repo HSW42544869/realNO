@@ -23,7 +23,10 @@ public class plsyermovement : MonoBehaviour
     public AudioClip die;
     [Header("鑰匙數量")]
     static public int key = 0;
+    [Header("死亡介面")]
+    public GameObject dietitle;
 
+    private GameObject gg;
     private AudioSource aud;
     private bool isDashButtonDown;  //快速移動觸發
     private Vector2 movement; //移動2維向量
@@ -74,7 +77,7 @@ public class plsyermovement : MonoBehaviour
                     lastMoveDir = moveDir;
                 }
 
-                if (Input.GetKeyDown(KeyCode.P))    //如果按下空白鍵觸發快速移動
+                if (Input.GetKeyDown(KeyCode.M))    //如果按下空白鍵觸發快速移動
                 {
                     isDashButtonDown = true;    //開關打開
 
@@ -202,9 +205,11 @@ public class plsyermovement : MonoBehaviour
         if(live <= 0)
         {
             aud.PlayOneShot(die, Random.Range(0.3f, 0.5f));
+           
             //ani.SetBool("", true);
             enabled = false;
             Destroy(gameObject, 2f);
+            dietitle.SetActive(true);
         }
     }
 #endregion

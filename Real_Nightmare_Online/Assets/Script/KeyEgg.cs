@@ -5,7 +5,7 @@ using UnityEngine;
 public class KeyEgg : MonoBehaviour
 {
     [Header("血量")]
-    static public int elive = 3;
+     public int elive = 3;
     [Header("範圍")]
     public float range = 5;
     [Header("目標物件")]
@@ -17,6 +17,7 @@ public class KeyEgg : MonoBehaviour
     private float timer = 0;
     [Header("鑰匙")]
     public GameObject key;
+    
 
     private void Awake()
     {

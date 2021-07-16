@@ -5,7 +5,7 @@ using UnityEngine;
 public class Egg : MonoBehaviour
 {
     [Header("血量")]
-    static public int elive = 3;
+     public int elive = 3;
     [Header("範圍")]
     public float range = 5;
     [Header("目標物件")]
