@@ -203,7 +203,8 @@ public class plsyermovement : MonoBehaviour
         {
             aud.PlayOneShot(die, Random.Range(0.3f, 0.5f));
             //ani.SetBool("", true);
-            enabled = false;  
+            enabled = false;
+            Destroy(gameObject, 2f);
         }
     }
 #endregion
