@@ -15,4 +15,13 @@ public class Sence : MonoBehaviour
         plsyermovement.live = 100;
 
     }
+    public void QuitGame()
+    {
+        //Debug.Log("退出遊戲");
+        Application.Quit();
+    }
+    public void Developer()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
