@@ -30,7 +30,7 @@ public class Testing : MonoBehaviour {
     }
 
     private void PlayerAimWeapon_OnShoot(object sender, PlayerAimWeapon.OnShootEventArgs e) {
-        UtilsClass.ShakeCamera(.6f, .05f);
+        UtilsClass.ShakeCamera(.1f, .05f);
         WeaponTracer.Create(e.gunEndPointPosition, e.shootPosition);
         //Shoot_Flash.AddFlash(e.gunEndPointPosition);
 
