@@ -24,6 +24,7 @@ public class Enemy2 : MonoBehaviour
         aud = GetComponent<AudioSource>();
         rig = GetComponent<Rigidbody2D>();
         target = GameObject.Find("character").transform;
+        transform.position = new Vector3(transform.position.x,transform.position.y, target.position.z);
     }
     private void Update()
     {
