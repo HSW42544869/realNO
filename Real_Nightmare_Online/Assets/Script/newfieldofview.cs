@@ -15,7 +15,7 @@ public class newfieldofview : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        fov = 40f;    //角度90
+        fov = 40f;    //角度
         viewDistance = 80f;
         origin = Vector3.zero;
     }

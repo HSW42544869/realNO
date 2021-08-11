@@ -5,6 +5,150 @@ TextureImporter:
   - first:
       213: -4373184736405950995
     second: floor_0
+  - first:
+      213: 4158732434352698325
+    second: floor_1
+  - first:
+      213: 4341242654334979365
+    second: floor_2
+  - first:
+      213: 1903813881350671106
+    second: floor_3
+  - first:
+      213: 8666153195878230358
+    second: floor_4
+  - first:
+      213: 4633350270274512122
+    second: floor_5
+  - first:
+      213: -3085053661432295534
+    second: floor_6
+  - first:
+      213: 601623144054556460
+    second: floor_7
+  - first:
+      213: 7700971350373784707
+    second: floor_8
+  - first:
+      213: -238930871357459764
+    second: floor_11
+  - first:
+      213: 1546552405686873150
+    second: floor_12
+  - first:
+      213: -2362380025853997434
+    second: floor_13
+  - first:
+      213: -368596763120020550
+    second: floor_14
+  - first:
+      213: 1338063624304658472
+    second: floor_15
+  - first:
+      213: 2509881989800874174
+    second: floor_16
+  - first:
+      213: -737837024687671454
+    second: floor_17
+  - first:
+      213: 3038923913770714274
+    second: floor_18
+  - first:
+      213: 6433854208847190039
+    second: floor_21
+  - first:
+      213: 1492911798537794108
+    second: floor_22
+  - first:
+      213: 5048416880140299565
+    second: floor_23
+  - first:
+      213: 7641892208429834689
+    second: floor_24
+  - first:
+      213: -800442207075965033
+    second: floor_25
+  - first:
+      213: 7649971556135936819
+    second: floor_26
+  - first:
+      213: 4870877652962855886
+    second: floor_27
+  - first:
+      213: -435046055405278703
+    second: floor_28
+  - first:
+      213: 8383685822998553962
+    second: floor_31
+  - first:
+      213: -5034969528391634466
+    second: floor_32
+  - first:
+      213: 2551854644190722719
+    second: floor_33
+  - first:
+      213: -4943970475600233264
+    second: floor_34
+  - first:
+      213: -2987767069438478369
+    second: floor_35
+  - first:
+      213: 291018983614156155
+    second: floor_36
+  - first:
+      213: 3750309937199576963
+    second: floor_37
+  - first:
+      213: 5602807671860324422
+    second: floor_38
+  - first:
+      213: -6685596499255760803
+    second: floor_41
+  - first:
+      213: -1098774980844157507
+    second: floor_42
+  - first:
+      213: -7549047806516835191
+    second: floor_43
+  - first:
+      213: 7923879727469168163
+    second: floor_44
+  - first:
+      213: 384148847483732694
+    second: floor_45
+  - first:
+      213: 9152501972413254891
+    second: floor_46
+  - first:
+      213: -71610273293795249
+    second: floor_47
+  - first:
+      213: -2293774143102967410
+    second: floor_48
+  - first:
+      213: 252377652158392065
+    second: floor_51
+  - first:
+      213: 8268456416014038034
+    second: floor_52
+  - first:
+      213: 2474841612100836845
+    second: floor_53
+  - first:
+      213: 445852485584619867
+    second: floor_54
+  - first:
+      213: 6562677597701442729
+    second: floor_55
+  - first:
+      213: -3274478132227461676
+    second: floor_56
+  - first:
+      213: -2068269053406417002
+    second: floor_57
+  - first:
+      213: -564367763420502088
+    second: floor_58
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -35,8 +179,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -64,7 +208,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -76,7 +220,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -88,7 +232,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -117,12 +261,12 @@ TextureImporter:
       name: floor_0
       rect:
         serializedVersion: 2
-        x: 135
+        x: 147
         y: 0
-        width: 1070
+        width: 1042
         height: 768
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
